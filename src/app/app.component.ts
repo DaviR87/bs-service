@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MyStateService } from './my-state.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bs-service';
+
+  appState: boolean = false;
+  constructor(private mySvc: MyStateService) {
+    mySvc.state.subscribe(val => {
+      this.appState = val;
+    })
+  }
+
+  changeState() {
+    this.mySvc.state.next(!this.appState);
+  }
 }

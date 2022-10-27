@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MyStateService } from '../my-state.service';
 
 @Component({
   selector: 'app-right',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightComponent implements OnInit {
 
-  constructor() { }
+  rightState: boolean = false;
+
+  constructor(private mySvc: MyStateService) { }
 
   ngOnInit(): void {
+    this.mySvc.state.subscribe(val => {
+      this.rightState = val;
+    })
+  }
+
+  changeState() {
+    this.mySvc.state.next(!this.rightState);
   }
 
 }
