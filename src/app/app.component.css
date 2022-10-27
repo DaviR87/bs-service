@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.left {
+    background-color: rgb(112, 125, 222);
+    width: 50%;
+}
+
+.right {
+    background-color: rgb(238, 148, 228);
+    width: 50%;
+}
